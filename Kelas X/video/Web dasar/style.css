@@ -1,0 +1,23 @@
+body{
+    background-color: aquamarine;
+}
+
+img{
+    width: 300px;
+}
+
+/* nav{
+    margin-left: 200px;
+} */
+
+.batas{
+    margin-left: 200px;
+}
+
+.warna{
+    background-color: gold;
+}
+
+#background{
+    background-color: red;
+}
