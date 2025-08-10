@@ -1,0 +1,89 @@
+.border{
+    border: 1px solid;
+}
+
+.wadah{
+    width: 1000px;
+    margin: auto;
+}
+
+li:hover{
+    background-color: gray;
+}
+
+h2:hover{
+    background-color: gray;
+}
+
+.card:target{
+    background-color: bisque;
+}
+
+p::first-letter{
+    color: blue;
+    font-size: xx-large;
+}
+
+.display{
+    display: inline-block;
+    padding: 3%;
+}
+
+.display:hover{
+    animation-name: animasi ;
+    animation-duration: 5s;
+}
+
+@keyframes animasi {
+    0% {background-color: blue;}
+    25%{background-color: black;}
+    50%{background-color: crimson;}
+    100%{background-color: red;}
+}
+
+.warna{
+    background-color:red;
+    background-image:linear-gradient( to bottom right, red, yellow);;
+    color: blue;
+}
+
+img{
+    width: 200px;
+}
+
+.card{
+    width: 50%;
+    padding: 5%;
+    box-sizing: border-box;
+}
+
+.horizontal{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.rata{
+    text-align: center;
+}
+
+@media only screen and (max-width: 500px) {
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    .tempat{
+        width: 80%;
+    }
+
+.lebar{
+    width: 100%;
+}
+
+.respon{
+    display: flex;
+    flex-direction: column;
+}
+
+}
