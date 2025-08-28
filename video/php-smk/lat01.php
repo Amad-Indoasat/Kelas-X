@@ -1,3 +1,4 @@
+
 <?php
 
     echo "Belajar php";
@@ -17,4 +18,3 @@
     echo 2023 + 2;
 
 ?>
-
