@@ -1,4 +1,3 @@
-
 <?php 
 
     $tulisan = 'Saya belajar PHP';
@@ -25,4 +24,5 @@
 
     /*Komentar
     Banyak*/
+
 ?>
