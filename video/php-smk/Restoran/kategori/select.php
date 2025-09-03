@@ -1,66 +1,58 @@
-<div style="margin:auto; width=900px;">
 <?php 
 
-    require_once "../function.php";
+$jumlahdata = $db->rowCOUNT("SELECT idkategori FROM tblkategori");
+$banyak = 3;
 
-    $sql = "SELECT idkategori FROM tblkategori";
-    $result = mysqli_query($koneksi, $sql);
+$halaman = ceil($jumlahdata / $banyak);
 
-    $jumlahdata = mysqli_num_rows($result);
-
-    $banyak = 3;
-
-    $halaman = ceil($jumlahdata / $banyak);
-
-    for ($i=1 ; $i <=$halaman ; $i++ ) { 
-        echo '<a href="?p='.$i.'">'.$i.'</a>';
-        echo '&nbsp &nbsp &nbsp';
-    }
-
-    echo '<br> <br>';
-
-    if (isset($_GET['p'])) {
+if (isset($_GET['p'])) {
         $p=$_GET['p'];
         $mulai = ($p * $banyak) - $banyak;
+
     }else{   
         $mulai = 0;
     }
-   
 
-    $sql = "SELECT * FROM tblkategori LIMIT $mulai,$banyak";
-    
-    $result = mysqli_query($koneksi, $sql);
+$sql = "SELECT * FROM tblkategori ORDER BY kategori ASC LIMIT $mulai,$banyak";
+$row = $db->getALL($sql);
 
-    //var_dump($result);
+$no=1+$mulai;
 
-    $jumlah = mysqli_num_rows($result);
 
-    //echo'<br>';
 
-    //echo $jumlah;
+?>
+<div class="float-start mr-4">
+    <a class="btn btn-primary" href="?f=kategori&m=insert" role="button">Tambah data</a>
+</div>
 
-    echo '
-    
-<table border="1px">
-    <tr>
-        <th>No</th>
-        <th>Kategori</th>
-    </tr>
+<h3>Kategori</h3>
 
-    ';
-    $no=$mulai+1;
-    if ($jumlah > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo '<tr>';
-            echo '<td>'.$no++.'</td>';
-            echo '<td>'.$row['kategori'].'</td>';
-            echo'<br>';
-        }
+<table class="table table-bordered w-50">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Kategori</th>
+            <th>Delate</th>
+            <th>Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($row as $r): ?>
+        <tr>
+            <td><?php echo $no++ ?></td>
+            <td><?php echo $r['kategori'] ?></td>
+            <td><a href="?f=kategori&m=delete&id=<?php echo $r['idkategori'] ?>">Delete</a></td>
+            <td><a href="?f=kategori&m=update&id=<?php echo $r['idkategori'] ?>">Update</a></td>
+        </tr>
+        <?php endforeach ?>
+    </tbody>
+</table>
+
+<?php 
+
+ for ($i=1 ; $i <=$halaman ; $i++ ) { 
+        echo '<a href="?f=kategori&m=select&p='.$i.'">'.$i.'</a>';
+        echo '&nbsp &nbsp &nbsp';
     }
 
-    echo '</table>';
-
-?> 
-
-</div>
-   
+?>
