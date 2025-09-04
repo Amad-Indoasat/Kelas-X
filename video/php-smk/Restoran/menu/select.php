@@ -27,12 +27,19 @@
 
     <form action="" method="post">
 
-    <select name="opsi" id="" onchange="this.form.submit()">
-        <?php foreach ($row as $r): ?>
-        <option <?php if($r['idkategori']==$opsi) echo "selected"; ?> value="<?php echo $r['idkategori'] ?>">
-        <?php echo $r['kategori'] ?>
-        </option>
+
+    <div class="form-group w-50 mb-3">
+    <label for="idkategori">Kategori</label>
+     <select name="idkategori" id="idkategori" class="form-control" required>
+            <option value="">-- Pilih Kategori --</option>
+            <?php foreach ($row as $r): ?>
+            <option <?php if($r['idkategori']==$opsi) echo "selected"; ?> value="<?php echo $r['idkategori'] ?>">
+                <?php echo $r['kategori'] ?>
+            </option>
         <?php endforeach ?>
+     </select>
+    </div>
+       
         
     </select>
 
@@ -41,7 +48,7 @@
 </div>
 <?php 
 
-$jumlahdata = $db->rowCOUNT("SELECT idmenu FROM tblmenu");
+$jumlahdata = $db->rowCOUNT("SELECT idmenu FROM tblmenu $where");
 $banyak = 4;
 
 $halaman = ceil($jumlahdata / $banyak);
@@ -68,8 +75,8 @@ $no=1+$mulai;
         <tr>
             <th>No</th>
             <th>menu</th>
-            <th>Delate</th>
-            <th>Update</th>
+            <th>Harga</th>
+            <th>Gambar</th>
         </tr>
     </thead>
     <tbody>
@@ -78,6 +85,8 @@ $no=1+$mulai;
         <tr>
             <td><?php echo $no++ ?></td>
             <td><?php echo $r['menu'] ?></td>
+            <td><?php echo $r['harga'] ?></td>
+            <td><img style="width:100px" src="../upload/<?php echo $r['gambar'] ?>" alt=""></td>
             <td><a href="?f=menu&m=delete&id=<?php echo $r['idmenu'] ?>">Delete</a></td>
             <td><a href="?f=menu&m=update&id=<?php echo $r['idmenu'] ?>">Update</a></td>
         </tr>

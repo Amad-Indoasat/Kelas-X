@@ -1,7 +1,7 @@
 <?php 
 
 $jumlahdata = $db->rowCOUNT("SELECT idkategori FROM tblkategori");
-$banyak = 3;
+$banyak = 4;
 
 $halaman = ceil($jumlahdata / $banyak);
 
@@ -37,6 +37,7 @@ $no=1+$mulai;
         </tr>
     </thead>
     <tbody>
+         <?php if (!empty($row)) { ?>
         <?php foreach ($row as $r): ?>
         <tr>
             <td><?php echo $no++ ?></td>
@@ -45,6 +46,7 @@ $no=1+$mulai;
             <td><a href="?f=kategori&m=update&id=<?php echo $r['idkategori'] ?>">Update</a></td>
         </tr>
         <?php endforeach ?>
+         <?php } ?>
     </tbody>
 </table>
 
