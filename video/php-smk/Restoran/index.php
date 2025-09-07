@@ -13,6 +13,31 @@
         header("location:index.php");
     }
 
+    function cart(){
+          global $db;
+
+          $cart=0;
+
+        foreach ($_SESSION as $key => $value) {
+             if ($key<>'pelanggan' && $key<>'idpelanggan' && $key<>'user' && $key<>'level' && $key<>'iduser') {
+                
+                $id=substr($key,1);
+
+                $sql = "SELECT * FROM tblmenu WHERE idmenu='$id'";
+
+                $row=$db->getALL($sql);
+
+                foreach ($row as $r) {
+                    $cart++;
+                }
+
+             }
+        }
+
+        return $cart;
+
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +63,9 @@
                 echo '
                  <div class="d-flex justify-content-end gap-3">
                     <div class="menu-item"><a href="?log=logout">Logout</a></div>
-                    <div class="menu-item">Pelanggan : '.$_SESSION['pelanggan'].' </div>
+                    <div class="menu-item">Pelanggan :'.$_SESSION['pelanggan'].'</div>
+                    <div class="menu-item">Cart : ( <a href="?f=home&m=beli"> '.cart().'</a> ) </div>
+                    <div class="menu-item"><a href="?f=home&m=history"> History </a></div>
                 ';
             }else {
                 echo '

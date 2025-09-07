@@ -1,1 +1,1 @@
-saya belajar py
+print saya belajar py

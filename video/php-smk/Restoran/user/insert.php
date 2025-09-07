@@ -23,7 +23,6 @@
                 <option value="admin">admin</option>
                 <option value="koki">koki</option>
                 <option value="kasir">kasir</option>
-                <option value="fans mu">fans mu</option>
             </select>
         </div>
 
@@ -40,8 +39,8 @@
     if (isset($_POST['simpan'])) {
         $user = $_POST['user'];
         $email = $_POST['email'];
-        $password = $_POST['password'];
-        $konfirmasi = $_POST['konfirmasi'];
+        $password = hash('sha256', $_POST['password']);
+        $konfirmasi = hash('sha256', $_POST['konfirmasi']);
         $level = $_POST['level'];
 
         if ($password === $konfirmasi) {
