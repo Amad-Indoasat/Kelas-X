@@ -16,7 +16,7 @@ class FrontController extends Controller
     public function index()
     {
         $kategoris = Kategori::all();
-        $menus = Menu::all();
+        $menus = Menu::paginate(3);
         return view('menu', [
             'kategoris' => $kategoris,
             'menus' => $menus
@@ -52,7 +52,12 @@ class FrontController extends Controller
      */
     public function show($id)
     {
-        //
+        $kategoris = Kategori::all();
+        $menus = Menu::where('idkategori', $id)->paginate(3);
+        return view('kategori', [
+            'kategoris' => $kategoris,
+            'menus' => $menus
+        ]);
     }
 
     /**
@@ -87,5 +92,11 @@ class FrontController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function register()
+    {
+        $kategoris = Kategori::all();
+        return view('register', ['kategoris' => $kategoris]);
     }
 }
