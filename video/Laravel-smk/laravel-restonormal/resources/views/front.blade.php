@@ -14,7 +14,19 @@
                 <div class="container-fluid">
                     <a href="/"><img style="width: 100px" src="{{ asset('gambar/Starwalker.png') }}" alt=""></a>
                     <ul class="navbar-nav gap-5">
-                        <li class="nav-item">Cart</li>
+                        @if (session()->has('cart'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('cart') }}">
+                                    Cart ({{ count(session('cart')) }})
+                                </a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('cart') }}">🛒 Cart (0)</a>
+                            </li>
+                        @endif
+
+                        
 
                         @if (session()->missing('idpelanggan'))
                         <li class="nav-item"><a href="{{ url('register') }}">Register</a></li>

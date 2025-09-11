@@ -12,7 +12,7 @@
                         <p class="card-text text-muted">{{ $menu->deskripsi }}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="fw-bold text-primary">{{ $menu->harga }}</span>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Pesan</a>
+                            <a href="{{  url('beli/'.$menu->idmenu) }}" class="btn btn-sm btn-outline-primary">Beli</a>
                         </div>
                     </div>
                 </div>

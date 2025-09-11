@@ -1,1 +1,1 @@
-saya belajar js
+const name = "ahmad";
