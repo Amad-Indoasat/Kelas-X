@@ -15,10 +15,18 @@
                     <a href="/"><img style="width: 100px" src="{{ asset('gambar/Starwalker.png') }}" alt=""></a>
                     <ul class="navbar-nav gap-5">
                         <li class="nav-item">Cart</li>
+
+                        @if (session()->missing('idpelanggan'))
                         <li class="nav-item"><a href="{{ url('register') }}">Register</a></li>
-                        <li class="nav-item">Email</li>
-                        <li class="nav-item">Login</li>
-                        <li class="nav-item">Logout</li>
+                        <li class="nav-item"><a href="{{ url('login') }}">Login</a></li>                                                   
+                        @endif
+
+                        <li class="nav-item">
+                            @if (session()->has('idpelanggan'))
+                            {{ session('idpelanggan')['email'] }}
+                            <li class="nav-item"><a href="{{ url('logout') }}">Logout</a></li>                                  
+                            @endif
+                        </li>                        
                     </ul>
                 </div>
             </nav>

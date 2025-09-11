@@ -4,34 +4,61 @@
     
     <div class="row">
         <div class="col-6">
-            <form action="" method="post">
+            <form action="{{ url('/postregister') }}" method="post">
+                @csrf
 
                 <div class="mt-2">
                     <label class="form-label" for="pelanggan">Pelanggan:</label>
-                    <input class="form-control" type="text" name="pelanggan" id="">
+                    <input class="form-control" value="{{ old('pelanggan') }}" type="text" name="pelanggan" id="">
+                    <span class="text-danger">
+                        @error('pelanggan')
+                            {{ $message }}
+                        @enderror
+                    </span>
                 </div>
                 <div class="mt-2">
                     <label class="form-label" for="alamat">Alamat:</label>
-                    <input class="form-control" type="text" name="alamat" id="">
+                    <input class="form-control" value="{{ old('alamat') }}" type="text" name="alamat" id="">
+                        <span class="text-danger">
+                        @error('alamat')
+                            {{ $message }}
+                        @enderror
+                    </span>
                 </div>
                 <div class="mt-2">
                     <label class="form-label" for="telp">No Telp:</label>
-                    <input class="form-control" type="text" name="telp" id="">
+                    <input class="form-control" value="{{ old('telp') }}" type="text" name="telp" id="">
+                     <span class="text-danger">
+                        @error('telp')
+                            {{ $message }}
+                        @enderror
+                    </span>
                 </div>
                 <div class="mt-2">
-                    <label class="form-label" for="jenis kelamin">Jenis Kelamin:</label>
-                    <select class="form-select" name="jenis kelamin" id="">
+                    <label class="form-label" for="jeniskelamin">Jenis Kelamin:</label>
+                    <select class="form-select" value="{{ old('jeniskelamin') }}" name="jeniskelamin" id="">
                         <option value="l" selected>L</option>
                         <option value="p">P</option>
                     </select>
+                    </span>
                 </div>
                 <div class="mt-2">
                     <label class="form-label" for="email">Email:</label>
-                    <input class="form-control" type="email" name="email" id="">
+                    <input class="form-control" value="{{ old('email') }}" type="email" name="email" id="">
+                     <span class="text-danger">
+                        @error('email')
+                            {{ $message }}
+                        @enderror
+                    </span>
                 </div>
                 <div class="mt-2">
                     <label class="form-label" for="password">Password:</label>
-                    <input class="form-control" type="text" name="password" id="">
+                    <input class="form-control" type="password" name="password" id="">
+                     <span class="text-danger">
+                        @error('password')
+                            {{ $message }}
+                        @enderror
+                    </span>
                 </div>
                 <div class="mt-4">
                   

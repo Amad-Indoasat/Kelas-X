@@ -21,3 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontController::class, 'index']);
 Route::get('show/{id}', [FrontController::class, 'show']);
 Route::get('register', [FrontController::class, 'register']); //memanggil fungsi registrasi
+Route::get('login', [FrontController::class, 'login']);//lojin
+Route::get('logout', [FrontController::class, 'logout']);//logout
+Route::post('postregister', [FrontController::class, 'store']);
+Route::post('postlogin', [FrontController::class, 'postlogin']);
