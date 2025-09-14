@@ -132,22 +132,24 @@ class FrontController extends Controller
             'password' => 'required|min:3',
         ]);
 
-        $pelanggan = Pelanggan::where('email', $data)->first();
+        $pelanggan = Pelanggan::where('email', $data['email'])->first();
+
         if ($pelanggan) {
-            if (Hash::check($data['password'], $pelanggan['password'])) {
-                $data = [
-                    'idpelanggan' => $pelanggan['pelanggan'],
-                    'email' => $pelanggan['email'],
+            if (Hash::check($data['password'], $pelanggan->password)) {
+                $sessionData = [
+                    'idpelanggan' => $pelanggan->idpelanggan,
+                    'email' => $pelanggan->email,
                 ];
-                $request->session()->put('idpelanggan', $data);
+                $request->session()->put('idpelanggan', $sessionData);
                 return redirect('/');
             } else {
-                return back()->with('pasan' . 'password salah');
+                return back()->with('pesan', 'Password salah');
             }
         } else {
-            return back()->with('pesan' . 'Tolong registrasi dulu tuan');
+            return back()->with('pesan', 'Tolong registrasi dulu tuan');
         }
     }
+
 
     public function logout()
     {

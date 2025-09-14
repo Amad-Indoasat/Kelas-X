@@ -5,11 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Models\Menu;
+use App\Models\Order;
+use App\Models\OrderDetail;
 
 class CartController extends Controller
 {
     public function beli($idmenu)
     {
+
+        if (session()->missing('idpelanggan')) {
+            return redirect('login');
+        }
+
         $menu = Menu::where('idmenu', $idmenu)->first();
 
         echo $menu->idmenu . "<br>";
@@ -54,5 +61,62 @@ class CartController extends Controller
     {
         session()->forget('cart');
         return redirect('/');
+    }
+
+    public function tambah($idmenu)
+    {
+        $cart = session()->get('cart');
+        $cart[$idmenu]['jumlah']++;
+        session()->put('cart', $cart);
+
+        return redirect('cart');
+    }
+
+    public function kurang($idmenu)
+    {
+        $cart = session()->get('cart');
+
+        if ($cart[$idmenu]['jumlah'] > 1) {
+            $cart[$idmenu]['jumlah']--;
+            session()->put('cart', $cart);
+        } else {
+            unset($cart[$idmenu]);
+            session()->put('cart', $cart);
+        }
+
+
+        return redirect('cart');
+    }
+
+    public function checkout()
+    {
+        $idorder = date('YmdHms');
+        $total = 0;
+
+        foreach (session('cart') as $key => $value) {
+            $data = [
+                'idorder' => $idorder,
+                'idmenu' => $value['idmenu'],
+                'jumlah' => $value['jumlah'],
+                'hargajual' => $value['harga'],
+            ];
+
+            $total = $total + ($value['jumlah'] * $value['harga']);
+            OrderDetail::create($data);
+        }
+
+        $tanggal = date('Y-m-d');
+        $data = [
+            'idorder' => $idorder,
+            'idpelanggan' => session('idpelanggan')['idpelanggan'],
+            'tglorder' => $tanggal,
+            'total' => $total,
+            'bayar' => 0,
+            'kembali' => 0,
+        ];
+
+        Order::create($data);
+
+        return redirect('logout');
     }
 }

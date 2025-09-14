@@ -56,8 +56,8 @@
                  @yield('content')
             </div>
         </div>
-        <div>
-            footer
+        <div class="bg-light mt-5">
+            <p class="text-center">Github:Amad_Indoasat</p>
         </div>
     </div>
 
