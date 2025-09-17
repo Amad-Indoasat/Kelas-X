@@ -18,7 +18,7 @@ class MenuController extends Controller
     public function index()
     {
         $kategoris = Kategori::all();
-        $menus = Menu::join('kategoris', 'menus.idkategori', '=', 'kategoris.idkategori')->select[['menus.*', 'kategoris.*']]->paginate(3);
+        $menus = Menu::join('kategoris', 'menus.idkategori', '=', 'kategoris.idkategori')->select(['menus.*', 'kategoris.*'])->paginate(3);
         return view('Backend.menu.select', ['menus' => $menus, 'kategoris' => $kategoris]);
     }
 
@@ -110,7 +110,7 @@ class MenuController extends Controller
             ]);
 
             Menu::where('idmenu', $idmenu)->update([
-                
+
                 'menu' => $data['menu'],
                 'deskripsi' => $data['deskirpsi'],
                 'harga' => $data['harga'],

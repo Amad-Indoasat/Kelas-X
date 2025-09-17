@@ -9,7 +9,7 @@
 
                 @if (Session::has('pesan'))
                     <div class="alert alert-danger">
-                        {{ sephssion()->get('pesan') }}</div>                    
+                        {{ session()->get('pesan') }}</div>                    
                 @endif
 
                 <div class="mt-2">

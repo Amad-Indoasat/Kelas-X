@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 
@@ -15,7 +16,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('Backend.order.select');
+        $orders = Order::join('pelanggans', 'orders.idpelanggan', '=', 'pelanggans.idpelanggan')
+            ->select(['orders.*', 'pelanggans.*'])
+            ->orderBy('status', 'ASC')
+            ->paginate(2);
+        return view('Backend.order.select', ['orders' => $orders]);
     }
 
     /**
@@ -45,9 +50,10 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show($idorder)
     {
-        //
+        $order = Order::where('idorder', $idorder)->first();
+        return view('Backend.order.update', ['order' => $order]);
     }
 
     /**
@@ -56,9 +62,14 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit($idorder)
     {
-        //
+        $orders = Order::join('order_details', 'orders.idorder', '=', 'order_details.idorder')
+            ->join('menus', 'order_details.idmenu', '=', 'menus.idmenu')
+            ->join('pelanggans', 'orders.idpelanggan', '=', 'pelanggans.idpelanggan')
+            ->where('orders.idorder', $idorder)
+            ->get(['orders.*', 'order_details.*', 'menus.*', 'pelanggans.*']);
+        return view('Backend.order.detail', ['orders' => $orders]);
     }
 
     /**
@@ -68,9 +79,21 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateOrderRequest $request, Order $order)
+    public function update(Request $request, $idorder)
     {
-        //
+        $data = $request->validate([
+            'total' => 'required'
+        ]);
+
+        $kembalis = Order::where('idorder', $idorder)->first();
+        $kembali = $data['total'] - $kembalis->total;
+
+        Order::where('idorder', $idorder)->update([
+            'bayar' => $data['total'],
+            'kembali' => $kembali,
+            'status' => 1,
+        ]);
+        return redirect('admin/order');
     }
 
     /**
