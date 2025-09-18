@@ -9,6 +9,7 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\OrderDetailController;
+use App\Http\Controllers\PelangganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +42,7 @@ Route::get('batal', [CartController::class, 'batal']);
 Route::get('checkout', [CartController::class, 'checkout']);
 Route::get('admin', [AuthController::class, 'index']);
 Route::post('admin/postlogin', [AuthController::class, 'postlogin']);
-Route::post('admin/logout', [AuthController::class, 'logout']);
+Route::get('admin/logout', [AuthController::class, 'logout']);
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     Route::group(['middleware' => ['CekLogin:admin']], function () {
@@ -55,6 +56,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         Route::resource('menu', MenuController::class);
         Route::resource('order', OrderController::class);
         Route::resource('orderdetail', OrderDetailController::class);
+        Route::resource('pelanggan', PelangganController::class);
         Route::get('select', [MenuController::class, 'select']);
         Route::post('postmenu/{id}', [MenuController::class, 'update']);
     });

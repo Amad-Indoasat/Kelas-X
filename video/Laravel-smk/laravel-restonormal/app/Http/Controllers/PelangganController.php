@@ -15,7 +15,8 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        //
+        $pelanggans = Pelanggan::paginate(3);
+        return view('Backend.pelanggan.select', ['pelanggans' => $pelanggans]);
     }
 
     /**
@@ -45,9 +46,18 @@ class PelangganController extends Controller
      * @param  \App\Models\Pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function show(Pelanggan $pelanggan)
+    public function show($idpelanggan)
     {
-        //
+        $pelanggan = Pelanggan::where('idpelanggan', $idpelanggan)->first();
+
+        if ($pelanggan->aktif == 0) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+
+        Pelanggan::where('idpelanggan', $idpelanggan)->update(['aktif' => $status]);
+        return redirect('admin/pelanggan');
     }
 
     /**

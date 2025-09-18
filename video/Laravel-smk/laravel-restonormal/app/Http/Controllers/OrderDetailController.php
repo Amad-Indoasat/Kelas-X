@@ -18,7 +18,7 @@ class OrderDetailController extends Controller
     {
         $details = OrderDetail::join('orders', 'order_details.idorder', '=', 'orders.idorder')
             ->join('menus', 'order_details.idmenu', '=', 'menus.idmenu')
-            ->join('pelanggans', 'orders.idpelanggan', '=', 'pelanggans.idpelanggans')
+            ->join('pelanggans', 'orders.idpelanggan', '=', 'pelanggans.idpelanggan')
             ->select(['order_details.*', 'orders.*', 'menus.*', 'pelanggans.*'])
             ->paginate(3);
         return view('Backend.detail.select', ["details" => $details]);
@@ -36,7 +36,7 @@ class OrderDetailController extends Controller
 
         $details = OrderDetail::join('orders', 'order_details.idorder', '=', 'orders.idorder')
             ->join('menus', 'order_details.idmenu', '=', 'menus.idmenu')
-            ->join('pelanggans', 'orders.idpelanggan', '=', 'pelanggans.idpelanggans')
+            ->join('pelanggans', 'orders.idpelanggan', '=', 'pelanggans.idpelanggan')
             ->whereBetween('orders.tglorder', [$tglawal, $tglakhir])
             ->select(['order_details.*', 'orders.*', 'menus.*', 'pelanggans.*'])
             ->paginate(3);
