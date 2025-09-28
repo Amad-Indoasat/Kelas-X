@@ -1,0 +1,20 @@
+[
+  {
+    "idmenu": 1,
+    "idkategori": 1,
+    "menu": "apel",
+    "harga": 3000,
+    "warna": ["merah", "kuning", "hijau"],
+    "stok": true,
+    "keterangan": null
+  },
+  {
+    "idmenu": 1,
+    "idkategori": 1,
+    "menu": "pisang",
+    "harga": 2000,
+    "warna": ["potasium", "kuning"],
+    "stok": true,
+    "keterangan": null
+  }
+]
