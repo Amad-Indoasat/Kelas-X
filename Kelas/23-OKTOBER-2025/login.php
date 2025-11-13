@@ -13,7 +13,7 @@ if (isset($_POST['login'])) {
 
     if ($email == "Siuuuu@g.com" && $password = "777") {
         $_SESSION['email'] = $email;
-        header("location: index.php");
+        header("location: index.php"); //header = kembali
     } else {
         echo "Login Gagal";
     }
