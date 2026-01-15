@@ -1,0 +1,43 @@
+.Hlink {
+  text-decoration: none;
+  color: white;
+}
+
+.Nav {
+  display: flex;
+  justify-content: flex-start;
+  background-color: green;
+  gap: 3px;
+}
+
+.Profil {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Home {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Kontak {
+  display: flex;
+  justify-content: start;
+}
+
+.Prestasi {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Img {
+  display: flex;
+  justify-content: start;
+  height: 100px;
+  width: 100px;
+}
+
+.Form {
+  display: flex;
+  justify-content: start;
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BelajarJs</title>
+  </head>
+  <body>
+    <h1 id="Judul"></h1>
+    <p id="isi"></p>
+    <input type="number" id="bill1" value="" />
+    <input type="number" id="bill2" value="" />
+    <button onclick="hitung()">Hitung</button>
+
+    <h1 id="ReinkarnasiAnda">Reinkarnasi</h1>
+    <input type="number" id="bulan" placeholder="Masukkan Bulan" width="50px" />
+    <input
+      type="number"
+      id="tanggal"
+      placeholder="Masukkan Tanggal"
+      width="50px"
+    />
+    <button onclick="reinkarnasi()">Reinkarnasi anda</button>
+
+    <h1 id="nilaianda">Nilai Anda</h1>
+    <input type="number" id="nilai" placeholder="Masukkan Nilai" width="50px" />
+    <button onclick="nilai()">Nilai anda</button>
+
+    <script>
+      function hitung() {
+        let hasil = document.getElementById("Judul");
+        let bill1 = document.getElementById("bill1");
+        let bill2 = document.getElementById("bill2");
+
+        hasil.innerHTML = parseInt(bill1.value) + parseInt(bill2.value);
+      }
+
+      function reinkarnasi() {
+        let bulan = parseInt(document.getElementById("bulan").value);
+        let tanggal = parseInt(document.getElementById("tanggal").value);
+        let reinkarnasi = document.getElementById("ReinkarnasiAnda");
+
+        if (bulan < 1 || bulan > 12) {
+          alert("Bulan Baru Tuh");
+          return;
+        } else {
+          if (tanggal < 1 || tanggal > 31) {
+            alert("Tanggal Baru Tuh");
+            return;
+          } else {
+            if (bulan == 1) {
+              if (tanggal > 1 && tanggal < 21) {
+                reinkarnasi.innerHTML = "Reinkarnasi Anda Goblin";
+              } else {
+                reinkarnasi.innerHTML = "Reinkarnasi Anda Cacing Besar Alaska";
+              }
+            } else {
+              if (bulan == 2) {
+                if (tanggal > 1 && tanggal < 20) {
+                  reinkarnasi.innerHTML =
+                    "Reinkarnasi Anda Cacing Besar Alaska";
+                } else {
+                  reinkarnasi.innerHTML = "Reinkarnasi Anda Raja Iblis";
+                }
+              } else {
+                if (bulan == 3) {
+                  if (tanggal > 1 && tanggal < 20) {
+                    reinkarnasi.innerHTML = "Reinkarnasi Anda Raja Iblis";
+                  } else {
+                    reinkarnasi.innerHTML = "Reinkarnasi Anda Pohon Sawit";
+                  }
+                } else {
+                  if (bulan == 4) {
+                    if (tanggal > 1 && tanggal < 20) {
+                      reinkarnasi.innerHTML = "Reinkarnasi Anda Pohon Sawit";
+                    } else {
+                      reinkarnasi.innerHTML = "Reinkarnasi Anda Fufufafa";
+                    }
+                  } else {
+                    if (bulan == 5) {
+                      if (tanggal > 1 && tanggal < 20) {
+                        reinkarnasi.innerHTML = "Reinkarnasi Anda Fufufafa";
+                      } else {
+                        reinkarnasi.innerHTML = "Reinkarnasi Anda Iwak Teri";
+                      }
+                    } else {
+                      if (bulan == 6) {
+                        if (tanggal > 1 && tanggal < 20) {
+                          reinkarnasi.innerHTML = "Reinkarnasi Anda Iwak Teri";
+                        } else {
+                          reinkarnasi.innerHTML = "Reinkarnasi Anda Reza Kecap";
+                        }
+                      } else {
+                        if (bulan == 7) {
+                          if (tanggal > 1 && tanggal < 20) {
+                            reinkarnasi.innerHTML =
+                              "Reinkarnasi Anda Reza Kecap";
+                          } else {
+                            reinkarnasi.innerHTML =
+                              "Reinkarnasi Anda Mobil Mbg Gratis";
+                          }
+                        } else {
+                          if (bulan == 8) {
+                            if (tanggal > 1 && tanggal < 20) {
+                              reinkarnasi.innerHTML =
+                                "Reinkarnasi Anda Mobil Mbg Gratis";
+                            } else {
+                              reinkarnasi.innerHTML =
+                                "Reinkarnasi Anda Raza Solo";
+                            }
+                          } else {
+                            if (bulan == 9) {
+                              if (tanggal > 1 && tanggal < 20) {
+                                reinkarnasi.innerHTML =
+                                  "Reinkarnasi Anda Raja Solo";
+                              } else {
+                                reinkarnasi.innerHTML =
+                                  "Reinkarnasi Anda letdark Hytam";
+                              }
+                            } else {
+                              if (bulan == 10) {
+                                if (tanggal > 1 && tanggal < 20) {
+                                  reinkarnasi.innerHTML =
+                                    "Reinkarnasi Anda Letdark Hytam";
+                                } else {
+                                  reinkarnasi.innerHTML =
+                                    "Reinkarnasi Anda Slamet Kopling";
+                                }
+                              } else {
+                                if (bulan == 11) {
+                                  if (tanggal > 1 && tanggal < 20) {
+                                    reinkarnasi.innerHTML =
+                                      "Reinkarnasi Anda Slamet Kopling";
+                                  } else {
+                                    reinkarnasi.innerHTML =
+                                      "Anda Tidak Bereinkarnasi";
+                                  }
+                                } else {
+                                  if (bulan == 12) {
+                                    if (tanggal > 1 && tanggal < 20) {
+                                      reinkarnasi.innerHTML =
+                                        "Anda Tidak Berrinkarnasi";
+                                    } else {
+                                      reinkarnasi.innerHTML =
+                                        "Reinkarnasi Anda Goblin";
+                                    }
+                                  } else {
+                                    if (bulan > 12) {
+                                      alert("Bulan Baru Tuh");
+                                      return;
+                                    } else {
+                                      alert("Tanggal Baru Tuh");
+                                      return;
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      function nilai() {
+        let nilaianda = document.getElementById("nilaianda");
+        let nilai = document.getElementById("nilai").value;
+        if (nilai >= 90 && nilai <= 100) {
+          nilaianda.innerHTML = "Nilai Anda A";
+        } else if (nilai >= 70 && nilai < 90) {
+          nilaianda.innerHTML = "Nilai Anda B";
+        } else if (nilai >= 60 && nilai < 70) {
+          nilaianda.innerHTML = "Nilai Anda C";
+        } else if (nilai >= 50 && nilai < 60) {
+          nilaianda.innerHTML = "Nilai Anda D";
+        } else if (nilai >= 1 && nilai < 50) {
+          nilaianda.innerHTML = "Nilai Anda E";
+        } else {
+          nilaianda.innerHTML = "Eksekusi";
+        }
+      }
+    </script>
+  </body>
+</html>
+
+<!-- Tugas: Buat konversi nilai | Jika 90-100 Nilainya adalah A | Jika 70-89 Nilainya adalah B | jika 60-69 Nilainya C | Jika 50-59 Nilainya D | >=50 Nilainya E |0=Eksekusi -->
