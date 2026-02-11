@@ -1,0 +1,35 @@
+PENJELASAN CALLBACK FUNCTION
+============================
+
+DEFINISI:
+Callback Function adalah fungsi yang dikirim sebagai parameter ke fungsi lain 
+dan dijalankan setelah proses tertentu selesai.
+
+KARAKTERISTIK:
+- Fungsi sebagai argumen fungsi lain
+- Dieksekusi setelah operasi selesai
+- Memungkinkan kode asynchronous
+- Meningkatkan fleksibilitas kode
+
+POLA PENGGUNAAN:
+function proses(data, callback) {
+    // proses data
+    callback(hasil);
+}
+
+CONTOH PENGGUNAAN:
+proses(x, y, function(x, y) {
+    hasil.innerHTML = x + y;
+});
+
+KEUNTUNGAN:
+✓ Kode lebih modular dan reusable
+✓ Mendukung pemrograman asynchronous
+✓ Memisahkan logika proses dan hasil
+✓ Fleksibel untuk berbagai kebutuhan
+
+KAPAN DIGUNAKAN:
+- Operasi asynchronous (AJAX, fetch)
+- Event handling kompleks
+- Array methods (forEach, map, filter)
+- Ketika hasil proses perlu ditangani berbeda

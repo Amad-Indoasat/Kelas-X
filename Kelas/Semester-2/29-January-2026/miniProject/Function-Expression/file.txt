@@ -1,0 +1,35 @@
+PENJELASAN FUNCTION EXPRESSION
+===============================
+
+DEFINISI:
+Function Expression adalah fungsi yang didefinisikan sebagai bagian dari ekspresi 
+dan disimpan dalam variabel. Fungsi dibuat saat runtime.
+
+KARAKTERISTIK:
+- Fungsi disimpan dalam variabel
+- Tidak di-hoisting (harus dideklarasi sebelum dipanggil)
+- Dapat berupa named atau anonymous function
+- Dibuat saat kode dijalankan
+
+SINTAKS:
+const namaVariabel = function() {
+    // kode fungsi
+}
+
+CONTOH PENGGUNAAN:
+const cek = function() {
+    hasil.innerHTML = n.value % 2 == 0 ? 'Genap' : 'Ganjil';
+}
+
+KEUNTUNGAN:
+✓ Lebih fleksibel dalam penggunaan
+✓ Dapat digunakan sebagai closure
+✓ Kontrol lebih baik atas scope
+✓ Mencegah penggunaan sebelum deklarasi
+
+KAPAN DIGUNAKAN:
+- Ketika fungsi perlu dibuat secara kondisional
+- Sebagai callback function
+- Ketika ingin mencegah hoisting
+- Dalam closure dan module pattern
+- Ketika fungsi perlu di-assign ke variabel

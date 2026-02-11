@@ -1,0 +1,30 @@
+PENJELASAN ARROW FUNCTION
+=========================
+
+DEFINISI:
+Arrow Function adalah cara penulisan fungsi yang lebih singkat menggunakan 
+sintaks "=>" (panah). Diperkenalkan di ES6.
+
+KARAKTERISTIK:
+- Sintaks lebih pendek dan modern
+- Tidak memiliki 'this' sendiri
+- Tidak bisa digunakan sebagai constructor
+- Cocok untuk fungsi sederhana
+
+SINTAKS:
+const namaFungsi = () => { kode }
+const namaFungsi = () => ekspresi_tunggal
+
+CONTOH PENGGUNAAN:
+const kuadrat = () => hasil.innerHTML = n.value * n.value;
+
+KEUNTUNGAN:
+✓ Kode lebih ringkas dan mudah dibaca
+✓ Mengurangi penggunaan kata kunci 'function'
+✓ Ideal untuk operasi sederhana
+✓ Sintaks modern dan populer
+
+KAPAN DIGUNAKAN:
+- Fungsi sederhana dengan 1-2 baris kode
+- Array methods (map, filter, reduce)
+- Event handlers sederhana

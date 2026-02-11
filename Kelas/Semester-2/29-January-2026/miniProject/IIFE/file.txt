@@ -1,0 +1,36 @@
+PENJELASAN IIFE (Immediately Invoked Function Expression)
+==========================================================
+
+DEFINISI:
+IIFE adalah fungsi yang langsung dijalankan setelah didefinisikan. 
+Fungsi ini dibungkus dalam tanda kurung dan dipanggil segera.
+
+KARAKTERISTIK:
+- Dieksekusi segera setelah didefinisikan
+- Dibungkus dalam tanda kurung ()
+- Tidak dapat dipanggil ulang
+- Menciptakan scope tersendiri
+
+SINTAKS:
+(function() {
+    // kode dijalankan langsung
+})();
+
+CONTOH PENGGUNAAN:
+(function() {
+    alert('Welcome to App');
+})();
+
+KEUNTUNGAN:
+✓ Tidak mencemari namespace global
+✓ Variabel di dalam IIFE bersifat private
+✓ Dijalankan otomatis tanpa perlu dipanggil
+✓ Mencegah konflik variabel
+✓ Cocok untuk inisialisasi aplikasi
+
+KAPAN DIGUNAKAN:
+- Inisialisasi aplikasi saat halaman dimuat
+- Membuat private scope untuk variabel
+- Menghindari polusi namespace global
+- Kode yang hanya perlu dijalankan sekali
+- Module pattern dan encapsulation

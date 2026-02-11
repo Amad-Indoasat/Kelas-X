@@ -1,0 +1,37 @@
+PENJELASAN FUNCTION CONSTRUCTOR
+================================
+
+DEFINISI:
+Function Constructor adalah fungsi yang digunakan untuk membuat objek baru 
+dengan kata kunci 'new'. Mirip dengan class di bahasa pemrograman lain.
+
+KARAKTERISTIK:
+- Nama fungsi biasanya diawali huruf kapital
+- Menggunakan kata kunci 'this'
+- Dipanggil dengan kata kunci 'new'
+- Membuat instance objek baru
+
+SINTAKS:
+function NamaObjek(param1, param2) {
+    this.properti1 = param1;
+    this.properti2 = param2;
+}
+
+CONTOH PENGGUNAAN:
+function Siswa(nama, kelas) {
+    this.nama = nama;
+    this.kelas = kelas;
+}
+let s = new Siswa('Dayat', 'X RPL');
+
+KEUNTUNGAN:
+✓ Membuat template untuk objek sejenis
+✓ Mendukung konsep OOP (Object-Oriented Programming)
+✓ Kode lebih terstruktur dan reusable
+✓ Mudah membuat banyak objek dengan properti sama
+
+KAPAN DIGUNAKAN:
+- Membuat multiple objek dengan struktur sama
+- Implementasi konsep OOP
+- Ketika butuh blueprint untuk objek
+- Manajemen data terstruktur

@@ -1,0 +1,37 @@
+PENJELASAN FUNCTION DECLARATION
+================================
+
+DEFINISI:
+Function Declaration adalah cara standar dan paling umum untuk mendefinisikan 
+fungsi di JavaScript menggunakan kata kunci 'function'.
+
+KARAKTERISTIK:
+- Menggunakan kata kunci 'function'
+- Memiliki nama fungsi yang jelas
+- Dapat dipanggil sebelum deklarasi (hoisting)
+- Cara tradisional dan paling umum
+
+SINTAKS:
+function namaFungsi(parameter) {
+    // kode fungsi
+    return hasil;
+}
+
+CONTOH PENGGUNAAN:
+function run() {
+    let a = document.getElementById("a").value;
+    let b = document.getElementById("b").value;
+    hasil.innerHTML = Number(a) + Number(b);
+}
+
+KEUNTUNGAN:
+✓ Mudah dipahami pemula
+✓ Mendukung hoisting (bisa dipanggil sebelum deklarasi)
+✓ Dapat digunakan berulang kali
+✓ Standar dan kompatibel semua browser
+
+KAPAN DIGUNAKAN:
+- Fungsi yang akan dipanggil berkali-kali
+- Fungsi dengan logika kompleks
+- Ketika butuh hoisting
+- Proyek yang membutuhkan kompatibilitas luas

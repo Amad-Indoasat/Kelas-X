@@ -1,0 +1,27 @@
+PENJELASAN ANONYMOUS FUNCTION
+==============================
+
+DEFINISI:
+Anonymous Function adalah fungsi tanpa nama yang biasanya digunakan sebagai nilai 
+atau argumen untuk fungsi lain.
+
+KARAKTERISTIK:
+- Tidak memiliki nama fungsi
+- Sering digunakan untuk event handler
+- Dapat disimpan dalam variabel
+- Dieksekusi langsung saat dipanggil
+
+CONTOH PENGGUNAAN:
+btn.onclick = function() {
+    // kode dijalankan saat tombol diklik
+}
+
+KEUNTUNGAN:
+✓ Kode lebih ringkas
+✓ Tidak mencemari namespace global
+✓ Cocok untuk operasi sekali pakai
+
+KAPAN DIGUNAKAN:
+- Event handling (onclick, onchange, dll)
+- Callback sederhana
+- Operasi yang tidak perlu dipanggil ulang
