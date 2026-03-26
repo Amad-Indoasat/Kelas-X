@@ -6,7 +6,7 @@ import GenreFilter from "./components/GenreFilter";
 import SearchBar from "./components/SearchBar";
 import "./index.css";
 
-const API_KEY = "e03c3cf16754d413c96aa3eddd746211";
+const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE_URL = "https://api.themoviedb.org/3";
 
 export default function App() {
