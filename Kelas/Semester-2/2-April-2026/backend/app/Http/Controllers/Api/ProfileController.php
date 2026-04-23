@@ -19,10 +19,11 @@ class ProfileController extends Controller
         $request->validate([
             'name'  => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $request->user()->id],
+            'profile_data' => ['nullable', 'array'],
         ]);
 
         $user = $request->user();
-        $user->update($request->only('name', 'email'));
+        $user->update($request->only('name', 'email', 'profile_data'));
 
         return response()->json([
             'user'    => $user->fresh(),

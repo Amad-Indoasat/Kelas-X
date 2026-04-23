@@ -20,30 +20,22 @@ export default function Dashboard() {
     navigate('/login');
   };
 
-  // Default data for demo
+  const profile = user?.profile_data || {};
   const careerProfile = {
-    title: 'Application Security Engineer',
-    bio: 'Passionate about securing web applications and finding vulnerabilities before the bad actors do.',
-    level: 'Mid-Senior',
-    status: 'Active',
-    clearance: 'Level 3',
-    focus: 'Web AppSec',
-    skills: [
-      { title: 'Penetration Testing', desc: 'Web application security assessment', progress: 85 },
-      { title: 'Code Review', desc: 'Static analysis & secure coding', progress: 75 },
-      { title: 'Threat Modeling', desc: 'STRIDE, DREAD frameworks', progress: 60 },
-    ],
-    roadmap: [
-      { year: 'Phase 1', title: 'OWASP Top 10 Mastery', status: 'completed' },
-      { year: 'Phase 2', title: 'Bug Bounty Programs', status: 'current' },
-      { year: 'Phase 3', title: 'Red Team Operations', status: 'locked' },
-    ],
+    title: profile.title || 'User Profile',
+    bio: profile.bio || 'Profile not configured. Please update your settings to establish your identity.',
+    level: profile.level || 'Not Set',
+    status: profile.status || 'Unverified',
+    clearance: profile.clearance || 'None',
+    focus: profile.focus || 'Not Set',
+    skills: profile.skills || [],
+    roadmap: profile.roadmap || [],
   };
 
   const stats = [
     { label: 'Level', val: careerProfile.level },
     { label: 'Status', val: careerProfile.status },
-    { label: 'Clearance', val: careerProfile.clearance },
+    { label: 'Role', val: careerProfile.clearance },
     { label: 'Focus', val: careerProfile.focus },
   ];
 
@@ -84,7 +76,7 @@ export default function Dashboard() {
             </div>
             <div className="relative z-10">
               <div className="badge badge-green pulse" style={{ marginBottom: '1.5rem' }}>
-                <Terminal size={12} /> ACTIVE PROFILE
+                <Terminal size={12} /> ACTIVE STATUS
               </div>
               <h1 className="text-4xl font-black mb-3" style={{ letterSpacing: '-0.04em' }}>
                 {careerProfile.title}
@@ -111,13 +103,13 @@ export default function Dashboard() {
               <div className="t-dot red"></div>
               <div className="t-dot yellow"></div>
               <div className="t-dot green"></div>
-              <span className="text-xs text-dim font-mono ml-2">appsec@terminal:~</span>
+              <span className="text-xs text-dim font-mono ml-2">user@dashboard:~</span>
             </div>
             <div className="terminal-content">
               <div><span className="t-prompt">❯ </span><span className="t-cmd">whoami</span></div>
               <div className="t-output">{user?.name} — {careerProfile.title}</div>
-              <div><span className="t-prompt">❯ </span><span className="t-cmd">status --clearance</span></div>
-              <div className="t-info">Clearance: {careerProfile.clearance} | Focus: {careerProfile.focus}</div>
+              <div><span className="t-prompt">❯ </span><span className="t-cmd">status --role</span></div>
+              <div className="t-info">Role: {careerProfile.clearance} | Focus: {careerProfile.focus}</div>
               <div><span className="t-prompt">❯ </span><span className="t-cmd">_</span></div>
             </div>
           </div>
@@ -126,7 +118,7 @@ export default function Dashboard() {
         {/* Skills */}
         <section id="skills" className="anim-3 mb-8">
           <h2 className="section-title">
-            <span className="text-green"><Code size={22} /></span> Core Security Matrix
+            <span className="text-green"><Code size={22} /></span> Core Skills
           </h2>
           <div className="grid-3">
             {careerProfile.skills.map((skill, i) => (
@@ -155,7 +147,7 @@ export default function Dashboard() {
         {/* Roadmap */}
         <section id="roadmap" className="anim-4 mb-8">
           <h2 className="section-title">
-            <span className="text-green"><Target size={22} /></span> Career Roadmap
+            <span className="text-green"><Target size={22} /></span> Roadmap
           </h2>
           <div className="card card-lg">
             <div className="timeline">
