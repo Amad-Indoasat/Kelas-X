@@ -7,7 +7,6 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Check if user is authenticated on mount
   useEffect(() => {
     fetchUser();
   }, []);
@@ -42,8 +41,14 @@ export function AuthProvider({ children }) {
     setUser(null);
   };
 
+  const updateProfile = async (data) => {
+    const res = await api.put('/profile', data);
+    setUser(res.data.user);
+    return res.data;
+  };
+
   return (
-    <AuthContext.Provider value={{ user, setUser, loading, login, register, logout, fetchUser }}>
+    <AuthContext.Provider value={{ user, setUser, loading, login, register, logout, fetchUser, updateProfile }}>
       {children}
     </AuthContext.Provider>
   );

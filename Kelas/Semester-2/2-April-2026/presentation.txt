@@ -1,0 +1,36 @@
+# PRESENTASI: WEB PROFIL PERSONAL DINAMIS
+
+## 1. Pengenalan Singkat
+*   **Apa itu?** Aplikasi web profil/portofolio interaktif di mana pengguna bisa mendaftar, login, dan mengedit data profilnya sendiri secara langsung.
+*   **Konsep Desain:** Modern, clean, dark-theme, dan responsif (nyaman di HP maupun PC).
+
+## 2. Teknologi yang Digunakan (Tech Stack)
+*   **Frontend:** React.js (dengan Vite agar cepat) & Vanilla CSS (custom design).
+*   **Backend:** Laravel (sebagai penyedia API).
+*   **Database:** MariaDB.
+*   **Autentikasi:** Laravel Sanctum (sistem login yang aman untuk Single Page Application).
+
+## 3. Fitur Utama
+*   **Sistem Akun:** Pendaftaran (Register) dan Masuk (Login) pengguna.
+*   **Inline Editing:** Edit profil langsung di halaman yang sama tanpa pindah halaman.
+*   **Manajemen Konten Fleksibel:** Bisa tambah/hapus *Skills*, *Timeline/Pengalaman*, dan *Kontak* sesuka hati.
+*   **Notifikasi (Toast):** Pesan sukses/gagal yang muncul otomatis di pojok layar.
+
+## 4. Struktur Database (Kunci Fleksibilitas)
+*   Menggunakan tabel utama: `users`.
+*   Kolom autentikasi: `id`, `name`, `email`, `password`.
+*   **Kolom Rahasia/Inti:** `profile_data` (Tipe data: **JSON**).
+*   **Kenapa pakai JSON?** 
+    *   Sangat efisien. 
+    *   Tidak perlu membuat banyak tabel terpisah untuk *skill*, *sekolah*, atau *kontak*. 
+    *   Semua data profil (bio, lokasi, list skill, dll) dibungkus jadi satu dan disimpan ke kolom `profile_data`.
+
+## 5. Alur Kerja Aplikasi (Workflow)
+1.  **Akses:** User membuka web, jika belum login, diarahkan ke form Login/Register.
+2.  **Dashboard:** Setelah login, user melihat halaman profilnya (awalnya kosong jika baru daftar).
+3.  **Edit:** User menekan tombol "Edit Profil". Semua teks berubah menjadi form input.
+4.  **Update:** User mengubah data, menambah skill, lalu klik "Simpan".
+5.  **Proses Data:** React mengirim format JSON ke Laravel -> Laravel menyimpan JSON itu ke database -> Tampilan kembali normal dengan data terbaru.
+
+## 6. Kesimpulan
+Web ini dirancang agar ringan (karena Single Page Application) dan sangat mudah dikembangkan di masa depan berkat penyimpanan data profil berbasis JSON.

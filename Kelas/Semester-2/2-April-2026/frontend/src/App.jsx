@@ -2,44 +2,43 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
-import Profile from './pages/Profile';
-import Settings from './pages/Settings';
+import ProfilePage from './pages/Profile';
 
-// Protected Route component
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
-
-  if (loading) return <div className="flex items-center justify-center p-8">Loading...</div>;
+  if (loading) return <LoadingScreen />;
   if (!user) return <Navigate to="/login" />;
-
   return children;
 }
 
-// Public Route component (redirects to dashboard if already logged in)
 function PublicRoute({ children }) {
   const { user, loading } = useAuth();
-
-  if (loading) return <div className="flex items-center justify-center p-8">Loading...</div>;
-  if (user) return <Navigate to="/dashboard" />;
-
+  if (loading) return <LoadingScreen />;
+  if (user) return <Navigate to="/" />;
   return children;
+}
+
+function LoadingScreen() {
+  return (
+    <div className="loading-screen">
+      <div className="loading-spinner" />
+      <p className="loading-text">Memuat...</p>
+    </div>
+  );
 }
 
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/dashboard" />} />
+      <Route path="/" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
       <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
       <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
-      <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-      <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-      <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 }
 
-function App() {
+export default function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
@@ -48,5 +47,3 @@ function App() {
     </AuthProvider>
   );
 }
-
-export default App;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { Shield, LogIn, AlertCircle } from 'lucide-react';
+import { LogIn, Mail, Lock, AlertCircle, Sparkles } from 'lucide-react';
 
 export default function Login() {
   const { login } = useAuth();
@@ -16,9 +16,9 @@ export default function Login() {
     setLoading(true);
     try {
       await login(form.email, form.password);
-      navigate('/dashboard');
+      navigate('/');
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
+      setError(err.response?.data?.message || 'Login gagal. Coba lagi.');
     } finally {
       setLoading(false);
     }
@@ -26,48 +26,63 @@ export default function Login() {
 
   return (
     <div className="auth-page">
-      <div className="auth-card">
+      <div className="auth-card animate-in">
         <div className="auth-header">
-          <Shield size={40} className="text-green" />
-          <h1 className="text-gradient">My Profile</h1>
-          <p className="text-muted">Sign in to your account</p>
+          <div className="auth-icon-wrap">
+            <Sparkles size={28} />
+          </div>
+          <h1 className="auth-title">Selamat Datang</h1>
+          <p className="auth-subtitle">Masuk ke akun profil kamu</p>
         </div>
 
         {error && (
           <div className="flash flash-error">
-            <AlertCircle size={14} /> {error}
+            <AlertCircle size={16} /> {error}
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">
-            <label>Email</label>
-            <input
-              type="email"
-              className="form-input"
-              value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
-              required
-              autoFocus
-            />
+            <label htmlFor="email">Email</label>
+            <div className="input-wrap">
+              <Mail size={16} className="input-icon" />
+              <input
+                id="email"
+                type="email"
+                className="form-input"
+                placeholder="nama@email.com"
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                required
+              />
+            </div>
           </div>
+
           <div className="form-group">
-            <label>Password</label>
-            <input
-              type="password"
-              className="form-input"
-              value={form.password}
-              onChange={(e) => setForm({ ...form, password: e.target.value })}
-              required
-            />
+            <label htmlFor="password">Password</label>
+            <div className="input-wrap">
+              <Lock size={16} className="input-icon" />
+              <input
+                id="password"
+                type="password"
+                className="form-input"
+                placeholder="••••••••"
+                value={form.password}
+                onChange={(e) => setForm({ ...form, password: e.target.value })}
+                required
+              />
+            </div>
           </div>
-          <button type="submit" className="btn btn-primary w-full" disabled={loading}>
-            <LogIn size={16} /> {loading ? 'Signing in...' : 'Sign In'}
+
+          <button type="submit" className="btn btn-primary btn-full" disabled={loading}>
+            <LogIn size={16} />
+            {loading ? 'Memproses...' : 'Masuk'}
           </button>
         </form>
 
         <p className="auth-footer">
-          Don't have an account? <Link to="/register" className="text-green">Register</Link>
+          Belum punya akun?{' '}
+          <Link to="/register" className="auth-link">Daftar di sini</Link>
         </p>
       </div>
     </div>
